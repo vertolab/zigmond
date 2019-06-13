@@ -1,4 +1,4 @@
-# A Python SDK for integrating with Zigmond
+# Zigmond Python SDK
 
 ## Installation
 
