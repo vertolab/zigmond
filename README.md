@@ -3,7 +3,7 @@
 ## Installation
 
 In your `requitements.txt` file add the following line:
->git+https://github.com/vertolab/zigmond.git#zigmond
+>git+https://github.com/vertolab/zigmond-python.git#zigmond
 
 Then `pip install -r requirements.txt`
 
