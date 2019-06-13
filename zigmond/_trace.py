@@ -43,7 +43,10 @@ def trace_req_resp(app_key: str = None):
                     if f_resp:
                         report['response'] = f_resp
                         report['response_ts'] = dt.now().isoformat(timespec='seconds') + 'Z'
-                    requests.post(ENDPOINT, json=report, headers={'X-Zigmond-App-Key': app_key_val})
+                    try:
+                        requests.post(ENDPOINT, json=report, headers={'X-Zigmond-App-Key': app_key_val}, timeout=3)
+                    except requests.exceptions.Timeout:
+                        pass
         return trace_and_call_f
 
     if app_key is None or isinstance(app_key, str):
