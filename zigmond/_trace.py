@@ -36,6 +36,7 @@ def trace_req_resp(app_key: str = None):
                 pass
             try:
                 f_resp = original_f(*args, **kwargs)
+                return f_resp
             finally:
                 if should_report:
                     report = dict(request=request)
