@@ -26,7 +26,7 @@ def trace_req_resp(app_key: str = None):
     def internal_trace(original_f):
         def trace_and_call_f(*args, **kwargs):
             should_report = False
-            request, f_resp = None, None
+            event, f_resp = None, None
             try:
                 event, context = args[0], args[1]
                 request = event.get('request')
@@ -39,7 +39,7 @@ def trace_req_resp(app_key: str = None):
                 return f_resp
             finally:
                 if should_report:
-                    report = dict(request=request)
+                    report = dict(request=event)
                     if f_resp:
                         report['response'] = f_resp
                         report['response_ts'] = dt.now().isoformat(timespec='seconds') + 'Z'
