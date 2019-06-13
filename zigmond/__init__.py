@@ -15,7 +15,4 @@
 
 from ._version import __version__
 
-
-def main():
-    """Entry point for the application script"""
-    print("Call your main application code here")
+from ._trace import trace_req_resp as trace
