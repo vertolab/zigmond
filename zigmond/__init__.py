@@ -15,4 +15,4 @@
 
 from ._version import __version__
 
-from ._trace import trace_req_resp as trace
+from ._trace import trace_req_resp as trace, AppKeyError
