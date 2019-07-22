@@ -60,7 +60,7 @@ def trace_req_resp(app_key: str = None):
                         report['response_ts'] = dt.now().isoformat(timespec='seconds') + 'Z'
                     try:
                         requests.post(ENDPOINT, json=report, headers={'X-Zigmond-App-Key': app_key_val}, timeout=3)
-                    except requests.exceptions.Timeout:
+                    except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
                         pass
         return trace_and_call_f
 
