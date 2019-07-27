@@ -21,7 +21,7 @@ def my_func(event, context):
     # handle the event
     return {}
  ```
- 
+#### Protect your App Key
 To better protect your App Key, consider using Lambda's support of environment variables to store your key. Zigmond
 will look for an App Key in the environment variable `ZIGMOND_APP_KEY` if no key is supplied explicitly:
 ```python
@@ -41,5 +41,16 @@ import zigmond
 
 sb = StandardSkillBuilder(...)
 ...
-lambda_handler = zigmond.trace(sb.lambda_handler())
+lambda_handler = zigmond.trace(app_key='YOUR_APP_KEY')(sb.lambda_handler())
+```
+#### Protect your App Key
+To better protect your App Key, consider using Lambda's support of environment variables to store your key. Zigmond
+will look for an App Key in the environment variable `ZIGMOND_APP_KEY` if no key is supplied explicitly:
+```python
+import zigmond
+
+
+sb = StandardSkillBuilder(...)
+...
+lambda_handler = zigmond.trace()(sb.lambda_handler())
 ```
