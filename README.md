@@ -8,6 +8,7 @@ In your `requirements.txt` file add the following line:
 Then `pip install -r requirements.txt`
 
 ## Usage
+### Basic (not [ASK-SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-python))
 
 Assuming your Lambda Handler as defined in the AWS Lambda console is `my_module.my_func`, simply wrap it with Zigmond
 and you should be good to go:
@@ -32,3 +33,13 @@ def my_func(event, context):
    pass
    # ...
 ``` 
+### With [ASK-SDK](https://github.com/alexa/alexa-skills-kit-sdk-for-python)
+Simply wrap your `lambda_handler` function with Zigmond:
+```python
+import zigmond
+
+
+sb = StandardSkillBuilder(...)
+...
+lambda_handler = zigmond.trace(sb.lambda_handler())
+```
