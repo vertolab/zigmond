@@ -52,5 +52,5 @@ import zigmond
 
 sb = StandardSkillBuilder(...)
 ...
-lambda_handler = zigmond.trace()(sb.lambda_handler())
+lambda_handler = zigmond.trace(sb.lambda_handler())
 ```
