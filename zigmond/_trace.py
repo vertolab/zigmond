@@ -14,6 +14,8 @@
 #    limitations under the License.
 
 import os
+from copy import deepcopy
+
 import requests
 from datetime import datetime as dt
 
@@ -43,7 +45,7 @@ def trace_req_resp(app_key: str = None):
             should_report = False
             event, f_resp = None, None
             try:
-                event, context = args[0], args[1]
+                event, context = deepcopy(args[0]), args[1]
                 request = event.get('request')
                 if request:
                     should_report = True
